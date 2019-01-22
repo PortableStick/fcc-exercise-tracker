@@ -1,0 +1,8 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS "public"."users" (
+    row_id BIGSERIAL NOT NULL UNIQUE PRIMARY KEY,
+    user_id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+    username TEXT UNIQUE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
